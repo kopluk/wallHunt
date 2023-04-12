@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board__wrapper {
+    position: relative;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 752px;
+    height: 752px;
+    border: 1px solid #575757;
+}
+
+.gameOver {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameLose {
+    background: rgba(255, 0, 0, 0.2);
+    color: red;
+}
+
+.gameWin {
+    background: rgba(0, 139, 255, 0.2);
+    color: #1717e8;
+}
+
+.info {
+    flex: 0 1 15%;
+}
+
+.info__text {
+    font-size: 24px;
+    font-family: Arial;
+}
+
+.cell {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #575757;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    width: 70%;
+    height: 70%;
+    background-color: #57c5b9;
+}
+
+.enemy {
+    width: 70%;
+    height: 70%;
+    background-color: #f53232;
+}
+
+.healthBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5px;
+    background-color: #29ec29;
+}
+
+.available {
+    background-color: #c0bebe;
+}
+
+.wall {
+    background-color: #939393;
+}
