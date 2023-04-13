@@ -1,6 +1,6 @@
-import {Entity} from "./Entity";
+import {Entity} from "./entities/Entity";
 import {Board} from "./Board";
-import {Names} from "./Names";
+import {Names} from "./entities/Names";
 
 export class Cell {
   x: number;

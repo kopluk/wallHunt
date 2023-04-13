@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Cell} from "../models/Cell";
-import {Names} from "../models/Names";
+import {Names} from "../models/entities/Names";
 
 interface CellProps {
   cell: Cell;
@@ -23,6 +23,7 @@ const CellComponent: FC<CellProps> = ({cell, click}) => {
           cell.occupied?.name === Names.ENEMY ? Names.ENEMY : ''].join(' ')
         }>
       </div>
+      {/*<div style={{fontSize: 10}}>{cell.x}-{cell.y}</div>*/}
     </div>
   );
 };

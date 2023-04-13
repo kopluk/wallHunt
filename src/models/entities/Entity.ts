@@ -1,4 +1,4 @@
-import {Cell} from "./Cell";
+import {Cell} from "../Cell";
 import {Names} from "./Names";
 
 export class Entity {
