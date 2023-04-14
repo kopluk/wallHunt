@@ -2,19 +2,19 @@ import React, {FC} from 'react';
 import {Cell} from "../models/Cell";
 import CellComponent from "./CellComponent";
 import {Board} from "../models/Board";
+import GameOverComponent from "./GameOverComponent";
 
 interface BoardProps {
   board: Board;
   click: (cell: Cell) => void;
+  levelNumber: number;
 }
 
-const BoardComponent: FC<BoardProps> = ({board, click}) => {
+const BoardComponent: FC<BoardProps> = ({board, click, levelNumber}) => {
   return (
     <div className={'board__wrapper'}>
       {board.gameOvered
-        ? <div className={['gameOver', board.gameWined ? 'gameWin' : '', board.gameLost ? 'gameLose' : ''].join(' ')}>
-          GAME OVER
-        </div>
+        ? <GameOverComponent board={board} levelNumber={levelNumber}/>
         : ''
       }
       <div className={'board'}>

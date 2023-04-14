@@ -1,7 +1,7 @@
 import {Cell} from "./Cell";
 import {Enemy, Player, Wall} from "./entities/Entity";
 import {Names} from "./entities/Names";
-import {LEVEL_7, Levels} from "./levels/Levels";
+import {LEVEL_7, LevelsEntities} from "./levels/LevelsEntities";
 import {randomInteger} from "../utils/randomInteger";
 
 
@@ -12,10 +12,9 @@ export class Board {
   gameOvered: boolean = false;
   gameLost: boolean = false;
   gameWined: boolean = false;
-  entities: Levels[];
+  entities: LevelsEntities[];
 
-
-  constructor(limitMovesCount: number, entities: Levels[]) {
+  constructor(limitMovesCount: number, entities: LevelsEntities[]) {
     this.limitMovesCount = limitMovesCount;
     this.entities = entities;
   }
@@ -59,21 +58,6 @@ export class Board {
     return this.cells[y][x];
   }
 
-  // public addPlayer() {
-  //   new Player(this.getCell(10, 2), 50, 100)
-  // }
-  //
-  // public addEnemies() {
-  //   new Enemy(this.getCell(9, 3), 50, 110)
-  //   new Enemy(this.getCell(6, 5), 50, 90)
-  // }
-  //
-  // public addWalls() {
-  //   new Wall(this.getCell(10, 5))
-  //   new Wall(this.getCell(11, 6))
-  //   new Wall(this.getCell(11, 4))
-  // }
-
   public addEntities() {
     for (const entity of this.entities) {
       const entityName = entity.entity;
@@ -88,17 +72,22 @@ export class Board {
       }
     }
 
+    this.addLevel7Entities();
+  }
+
+  private addLevel7Entities() {
     if (this.entities === LEVEL_7) {
-      const wallsCount = randomInteger(40, 80);
-      const enemiesCount = randomInteger(2, 3);
-      this.limitMovesCount = Math.floor((enemiesCount * 3 + (wallsCount * enemiesCount) - wallsCount * (enemiesCount - 1)) / 2) ;
+      const wallsCount = randomInteger(120, 240);
+      const enemiesCount = randomInteger(3, 4);
+      this.limitMovesCount = Math.floor(enemiesCount * 2 + wallsCount * enemiesCount / 18) ;
 
       for (let i = 0; i < enemiesCount; i++) {
         const x = randomInteger(0, 29);
         const y = randomInteger(0, 29);
+        const health = randomInteger(90, 190);
 
         if (this.getCell(x, y).isEmpty())
-          new Enemy(this.getCell(x, y), 50, 110)
+          new Enemy(this.getCell(x, y), 50, health)
       }
       for (let i = 0; i < wallsCount; i++) {
         const x = randomInteger(0, 29);
@@ -107,6 +96,8 @@ export class Board {
         if (this.getCell(x, y).isEmpty())
           new Wall(this.getCell(x, y))
       }
+
+      new Player(this.getCell(randomInteger(0, 29), randomInteger(0, 29)), randomInteger(50, 100), 100)
     }
   }
 
@@ -140,14 +131,12 @@ export class Board {
     return true;
   }
 
-  public gameOver(): string | undefined {
+  public gameOver(): void {
     if (this.isEnemiesDead()) {
       this.gameWin()
-      return 'win';
     }
     if (!this.isMovesLeft()) {
       this.gameLose()
-      return 'lose';
     }
   }
 

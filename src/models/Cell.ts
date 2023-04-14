@@ -24,12 +24,14 @@ export class Cell {
       return false;
     }
 
-    if (this.isBetweenWalls(cell)) {
-      return false
-    }
-
     if (this.canGoBehind(cell)) {
       return true
+    }
+
+    if ((absx === 2 && absy === 2) || (absx === 1 && absy === 1)) {
+      if (this.isBetweenWalls(cell)) {
+        return false;
+      }
     }
 
     if ((absx <= 2 && absy <= 2) && (absx !== 0 || absy !== 0)) {
@@ -142,19 +144,26 @@ export class Cell {
   }
 
   isBetweenWalls(target: Cell): boolean {
-    const absx = Math.abs(this.x - target.x);
-    const absy = Math.abs(this.y - target.y);
+    const absX = Math.abs(this.x - target.x)
+    const absY = Math.abs(this.y - target.y);
 
     const dx = this.x < target.x ? 1 : -1;
     const dy = this.y < target.y ? 1 : -1;
 
-    if ((absx === 2 && absy === 2) || (absx === 1 && absy === 1)) {
+    if (absX === 2) {
       if (
-        (this.board.getCell(this.x, this.y + dy).occupied) &&
-        (this.board.getCell(this.x + dx, this.y).occupied)
+        (!this.board.getCell(this.x + dx, this.y + dy * 2).isEmpty()) &&
+        (!this.board.getCell(this.x + dx * 2, this.y + dy).isEmpty())
       ) {
         return true;
       }
+    }
+
+    if (
+      (!this.board.getCell(this.x, this.y + dy).isEmpty()) &&
+      (!this.board.getCell(this.x + dx, this.y).isEmpty())
+    ) {
+      return true;
     }
 
     return false;
@@ -188,7 +197,7 @@ export class Cell {
     }
   }
 
-  private isDead(): boolean {
+  private isDead() : boolean {
     return !!(this.occupied && this.occupied.health <= 0);
   }
 

@@ -1,7 +1,7 @@
 import {Wall} from "../entities/Entity";
 import {randomInteger} from "../../utils/randomInteger";
 
-export interface Levels {
+export interface LevelsEntities {
   entity: string;
   x: number;
   y: number;
@@ -10,7 +10,7 @@ export interface Levels {
 }
 //__________________________________________________________________________________________
 // УРОВЕНЬ 1
-export const LEVEL_1: Array<Levels> = [
+export const LEVEL_1: Array<LevelsEntities> = [
   {entity: 'enemy', x: 1, y: 1, damage: 50, health: 110},
   {entity: 'enemy', x: 16, y: 1, damage: 50, health: 110},
   {entity: 'enemy', x: 10, y: 11, damage: 50, health: 110},
@@ -79,24 +79,23 @@ for (let i = 0; i < 4; i++) {
 
 //__________________________________________________________________________________________
 // УРОВЕНЬ 2
-export const LEVEL_2: Array<Levels> = [
+export const LEVEL_2: Array<LevelsEntities> = [
+  {entity: 'wall', x: 10, y: 5},
+  {entity: 'wall', x: 11, y: 6},
   {entity: 'wall', x: 11, y: 4},
-  {entity: 'wall', x: 11, y: 5},
-  {entity: 'wall', x: 11, y: 11},
+  {entity: 'wall', x: 12, y: 5},
 
-  {entity: 'enemy', x: 9, y: 3, damage: 50, health: 110},
-  {entity: 'enemy', x: 6, y: 5, damage: 50, health: 90},
+  {entity: 'wall', x: 6, y: 4},
+  {entity: 'wall', x: 7, y: 5},
+
+  {entity: 'enemy', x: 29, y: 29, damage: 50, health: 90},
 
   {entity: 'player', x: 10, y: 2, damage: 50, health: 100},
 ]
 
-for (let i = 0; i < 8; i++) {
-  LEVEL_2.push({entity: 'wall', x: i, y: 4})
-}
-
 //__________________________________________________________________________________________
 // УРОВЕНЬ 3
-export const LEVEL_3: Array<Levels> = [
+export const LEVEL_3: Array<LevelsEntities> = [
   {entity: 'enemy', x: 9, y: 3, damage: 50, health: 110},
   {entity: 'enemy', x: 6, y: 5, damage: 50, health: 90},
 
@@ -105,7 +104,7 @@ export const LEVEL_3: Array<Levels> = [
 
 //__________________________________________________________________________________________
 // УРОВЕНЬ 4
-export const LEVEL_4: Array<Levels> = [
+export const LEVEL_4: Array<LevelsEntities> = [
   {entity: 'enemy', x: 9, y: 3, damage: 50, health: 110},
   {entity: 'enemy', x: 6, y: 5, damage: 50, health: 90},
 
@@ -114,7 +113,7 @@ export const LEVEL_4: Array<Levels> = [
 
 //__________________________________________________________________________________________
 // УРОВЕНЬ 5
-export const LEVEL_5: Array<Levels> = [
+export const LEVEL_5: Array<LevelsEntities> = [
   {entity: 'enemy', x: 9, y: 3, damage: 50, health: 110},
   {entity: 'enemy', x: 6, y: 5, damage: 50, health: 90},
 
@@ -123,7 +122,7 @@ export const LEVEL_5: Array<Levels> = [
 
 //__________________________________________________________________________________________
 // УРОВЕНЬ 6
-export const LEVEL_6: Array<Levels> = [
+export const LEVEL_6: Array<LevelsEntities> = [
   {entity: 'enemy', x: 9, y: 3, damage: 50, health: 110},
   {entity: 'enemy', x: 6, y: 5, damage: 50, health: 90},
 
@@ -132,7 +131,5 @@ export const LEVEL_6: Array<Levels> = [
 
 //__________________________________________________________________________________________
 // УРОВЕНЬ 7
-export const LEVEL_7: Array<Levels> = [
-  {entity: 'player', x: 10, y: 2, damage: 50, health: 100},
-]
+export const LEVEL_7: Array<LevelsEntities> = []
 

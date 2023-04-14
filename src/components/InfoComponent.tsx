@@ -10,7 +10,7 @@ interface InfoComponentsProps {
 const InfoComponent: FC<InfoComponentsProps> = ({restart, board}) => {
   return (
     <div className={'info'}>
-      <MyButton click={restart}>Restart</MyButton>
+      <MyButton click={restart}><span>Restart</span></MyButton>
       <div className={'info__text'}>
         <div>
           Количество ходов: {board.movesCount}

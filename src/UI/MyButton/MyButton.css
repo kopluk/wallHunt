@@ -1,5 +1,4 @@
 .mybtn {
-    padding: 5px 10px;
     background-color: #73bfc5;
     border: 1px solid #6767da;
     border-radius: 5px;
@@ -10,5 +9,7 @@
 
 .mybtn > * {
     color: #fff;
-   text-decoration: none;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
 }

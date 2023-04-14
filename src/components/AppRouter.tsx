@@ -1,14 +1,16 @@
 import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
-import AboutComponent from "./AboutComponent";
+import AboutPage from "../pages/AboutPage";
 import LevelPage from "../pages/LevelPage";
+import CongratulationsPage from "../pages/CongratulationsPage";
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path={'/*'} element={<Navigate to={'/level'}/>}/>
-      <Route path={'/level'} element={<AboutComponent/>}/>
+      <Route path={'/level'} element={<AboutPage/>}/>
+      <Route path={'/congratulations'} element={<CongratulationsPage/>}/>
       <Route path={'/level/:levelNumber'} element={<LevelPage/>}/>
+      <Route path={'/*'} element={<Navigate to={'/level'}/>}/>
     </Routes>
   );
 };

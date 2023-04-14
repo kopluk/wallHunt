@@ -1,7 +1,7 @@
 import React from 'react';
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar";
 
-const AboutComponent = () => {
+const AboutPage = () => {
   return (
     <div>
       <NavBar/>
@@ -10,4 +10,4 @@ const AboutComponent = () => {
   );
 };
 
-export default AboutComponent;
+export default AboutPage;

@@ -4,11 +4,12 @@ import './MyButton.css'
 interface MyButtonProps {
   children: React.ReactNode,
   click?: () => void;
+  disabled?: boolean;
 }
 
-const MyButton: FC<MyButtonProps> = ({children, click}) => {
+const MyButton: FC<MyButtonProps> = ({children, click, ...props}) => {
   return (
-    <button onClick={click} className={'mybtn'}>
+    <button onClick={click} className={'mybtn'} {...props}>
       {children}
     </button>
   );

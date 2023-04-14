@@ -52,6 +52,15 @@
     font-family: Arial;
 }
 
+.congratulations {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial;
+    font-size: 34px;
+    text-align: center;
+}
+
 .gameOver {
     position: absolute;
     z-index: 5;
