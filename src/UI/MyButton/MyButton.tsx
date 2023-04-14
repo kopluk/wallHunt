@@ -7,9 +7,9 @@ interface MyButtonProps {
   disabled?: boolean;
 }
 
-const MyButton: FC<MyButtonProps> = ({children, click, ...props}) => {
+const MyButton: FC<MyButtonProps> = ({children, click, disabled}) => {
   return (
-    <button onClick={click} className={'mybtn'} {...props}>
+    <button onClick={click} className={['mybtn', disabled ? 'mybtn_disabled' : ''].join(' ')} disabled={disabled}>
       {children}
     </button>
   );

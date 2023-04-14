@@ -12,6 +12,10 @@
     align-items: center;
 }
 
+.container {
+    width: 1200px;
+}
+
 .appContainer {
     flex: 0 1 70%;
 }
@@ -26,7 +30,29 @@
 .navbar {
     margin: 0 0 20px 0;
     display: flex;
+}
+
+.navbar_left {
+    flex: 0 1 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar_left > * {
+    margin: 0 0 10px 10px;
+}
+
+.navbar_right {
+    flex: 0 1 80%;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.navbar_right > * {
+    margin: 0 0 0 10px;
 }
 
 .board__wrapper {
@@ -53,12 +79,31 @@
 }
 
 .congratulations {
-    padding: 15px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     font-family: Arial;
     font-size: 34px;
     text-align: center;
+    align-items: center;
+}
+
+.congratulations > *:not(:last-child) {
+    margin: 0 0 100px 0;
+}
+
+.about {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px
+}
+
+.about_text {
+    font-family: Arial;
+    font-size: 28px;
 }
 
 .gameOver {
@@ -82,6 +127,7 @@
 .gameWin {
     background: rgba(0, 139, 255, 0.2);
     color: #1717e8;
+    text-align: center;
 }
 
 .cell {

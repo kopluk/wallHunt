@@ -88,7 +88,7 @@ export const LEVEL_2: Array<LevelsEntities> = [
   {entity: 'wall', x: 6, y: 4},
   {entity: 'wall', x: 7, y: 5},
 
-  {entity: 'enemy', x: 29, y: 29, damage: 50, health: 90},
+  {entity: 'enemy', x: 8, y: 2, damage: 50, health: 90},
 
   {entity: 'player', x: 10, y: 2, damage: 50, health: 100},
 ]
