@@ -7,7 +7,7 @@ import {useActions} from "./hooks/useActions";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={'/wallHunt'}>
       <AppRouter />
     </BrowserRouter>
   );
