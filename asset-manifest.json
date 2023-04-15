@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/wallHunt/static/css/main.36405ac6.css",
-    "main.js": "/wallHunt/static/js/main.2c14e058.js",
+    "main.js": "/wallHunt/static/js/main.55104a8a.js",
     "index.html": "/wallHunt/index.html",
     "main.36405ac6.css.map": "/wallHunt/static/css/main.36405ac6.css.map",
-    "main.2c14e058.js.map": "/wallHunt/static/js/main.2c14e058.js.map"
+    "main.55104a8a.js.map": "/wallHunt/static/js/main.55104a8a.js.map"
   },
   "entrypoints": [
     "static/css/main.36405ac6.css",
-    "static/js/main.2c14e058.js"
+    "static/js/main.55104a8a.js"
   ]
 }
