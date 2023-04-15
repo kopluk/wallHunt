@@ -134,9 +134,11 @@ export class Board {
   public gameOver(): void {
     if (this.isEnemiesDead()) {
       this.gameWin()
+      return;
     }
     if (!this.isMovesLeft()) {
       this.gameLose()
+      return;
     }
   }
 
