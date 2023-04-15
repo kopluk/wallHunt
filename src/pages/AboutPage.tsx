@@ -1,10 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import NavBar from "../components/NavBar";
-import {useTypedSelector} from "../hooks/useTypedSelector";
-import {useActions} from "../hooks/useActions";
-import InfoComponent from "../components/InfoComponent";
-import {restart} from "../utils/restart";
-import BoardComponent from "../components/BoardComponent";
 
 const AboutPage = () => {
   return (

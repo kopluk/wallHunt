@@ -7,15 +7,14 @@ import WinComponent from "./WinComponent";
 
 interface GameOverComponentProps {
   board: Board;
-  levelNumber: number;
 }
 
-const GameOverComponent: FC<GameOverComponentProps> = ({board, levelNumber}) => {
+const GameOverComponent: FC<GameOverComponentProps> = ({board}) => {
   return (
     <div className={['gameOver', board.gameWined ? 'gameWin' : '', board.gameLost ? 'gameLose' : ''].join(' ')}>
       {board.gameLost
         ? <div>GAME OVER</div>
-        : <WinComponent levelNumber={levelNumber} />}
+        : <WinComponent levelNumber={board.levelNumber} />}
     </div>
   );
 };

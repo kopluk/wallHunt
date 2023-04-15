@@ -7,14 +7,13 @@ import GameOverComponent from "./GameOverComponent";
 interface BoardProps {
   board: Board;
   click: (cell: Cell) => void;
-  levelNumber: number;
 }
 
-const BoardComponent: FC<BoardProps> = ({board, click, levelNumber}) => {
+const BoardComponent: FC<BoardProps> = ({board, click}) => {
   return (
     <div className={'board__wrapper'}>
       {board.gameOvered
-        ? <GameOverComponent board={board} levelNumber={levelNumber}/>
+        ? <GameOverComponent board={board}/>
         : ''
       }
       <div className={'board'}>

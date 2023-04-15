@@ -1,33 +1,29 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useMemo, useState} from 'react';
 import BoardComponent from "../components/BoardComponent";
 import {Board} from "../models/Board";
 import {Cell} from "../models/Cell";
-import {click} from "../utils/click";
-import {restart} from "../utils/restart";
+import {click} from "../helpers/click";
+import {restart} from "../helpers/restart";
 import InfoComponent from "../components/InfoComponent";
-import {LEVEL_1} from "../models/levels/LevelsEntities";
+import {LevelsEntities} from "../models/levels/LevelsEntities";
 import NavBar from "../components/NavBar";
 import {useNavigate, useParams} from "react-router-dom";
 import {levelTemplates} from "../models/levels/levelTemplates";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-import {useActions} from "../hooks/useActions";
-import {levelBeforeUrlLevelIsNotCompleted} from "../utils/levelBeforeUrlLevelIsNotCompleted";
+import {levelBeforeUrlLevelIsNotCompleted} from "../helpers/levelBeforeUrlLevelIsNotCompleted";
+import {createLevelTemplate} from "../helpers/createLevelTemplate";
 
 const LevelPage: FC = () => {
   const {completedLevels} = useTypedSelector(state => state.completedLevels)
 
   const params = useParams()
-  const levelNumber: number = Number(params.levelNumber);
+  const urlLevelNumber: number = Number(params.levelNumber);
 
-  let levelEntities = LEVEL_1;
-  let levelMaxMoves = 1;
-  levelTemplates.forEach(level => {
-    if (level.levelNumber === levelNumber) {
-      levelEntities = level.entities
-      levelMaxMoves = level.maxMoves
-    }
-  })
-  const [board, setBoard] = useState(new Board(levelMaxMoves, levelEntities))
+  const {levelMaxMoves, levelEntities, levelNumber} = useMemo(() => {
+    return createLevelTemplate(urlLevelNumber)
+  }, [urlLevelNumber])
+
+  const [board, setBoard] = useState(new Board(levelMaxMoves, levelEntities, levelNumber))
 
   useEffect(() => {
     restart(board, setBoard)
@@ -35,14 +31,14 @@ const LevelPage: FC = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    levelBeforeUrlLevelIsNotCompleted(navigate, completedLevels, levelNumber);
+    levelBeforeUrlLevelIsNotCompleted(navigate, completedLevels, urlLevelNumber);
 
-    const newBoard = new Board(levelMaxMoves, levelEntities)
+    const newBoard = new Board(levelMaxMoves, levelEntities, levelNumber)
     newBoard.initCells();
     newBoard.addEntities();
     newBoard.highLightCells();
     setBoard(newBoard)
-  }, [params])
+  }, [urlLevelNumber])
 
   function handleClick(cell: Cell) {
     click(cell, board, setBoard)
@@ -51,10 +47,10 @@ const LevelPage: FC = () => {
   return (
     <div className="app">
       <div className={'appContainer'}>
-        <NavBar />
+        <NavBar/>
         <div className={'appPlayZone'}>
           <InfoComponent restart={() => restart(board, setBoard)} board={board}/>
-          <BoardComponent board={board} click={handleClick} levelNumber={levelNumber}/>
+          <BoardComponent board={board} click={handleClick}/>
         </div>
       </div>
     </div>

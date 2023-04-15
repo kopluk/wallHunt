@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import MyButton from "../UI/MyButton/MyButton";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useActions} from "../hooks/useActions";
@@ -28,7 +28,7 @@ const NavBar: FC = () => {
     <div className={'navbar'}>
       <div className={'navbar_left'}>
         <MyButton click={() => navigate('/congratulations')} disabled={!completedLevels[6].completed}>
-          <span>Позравления</span>
+          <span>Поздравления</span>
         </MyButton>
         <MyButton click={() => navigate('/about')}>
           <span>Об игре</span>
