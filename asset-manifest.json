@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/wallHunt/static/css/main.10a00e8f.css",
-    "main.js": "/wallHunt/static/js/main.820c29bb.js",
+    "main.css": "/wallHunt/static/css/main.b2d2fb13.css",
+    "main.js": "/wallHunt/static/js/main.4802c6dd.js",
     "index.html": "/wallHunt/index.html",
-    "main.10a00e8f.css.map": "/wallHunt/static/css/main.10a00e8f.css.map",
-    "main.820c29bb.js.map": "/wallHunt/static/js/main.820c29bb.js.map"
+    "main.b2d2fb13.css.map": "/wallHunt/static/css/main.b2d2fb13.css.map",
+    "main.4802c6dd.js.map": "/wallHunt/static/js/main.4802c6dd.js.map"
   },
   "entrypoints": [
-    "static/css/main.10a00e8f.css",
-    "static/js/main.820c29bb.js"
+    "static/css/main.b2d2fb13.css",
+    "static/js/main.4802c6dd.js"
   ]
 }
