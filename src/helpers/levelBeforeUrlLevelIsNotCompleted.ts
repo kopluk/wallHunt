@@ -7,7 +7,7 @@ export const levelBeforeUrlLevelIsNotCompleted = (
 ) => {
 
   for (let i = 0; i < completedLevels.length; i++) {
-    if (completedLevels[i].level === levelNumber) {
+    if (completedLevels[i].levelNumber === levelNumber) {
       if (!completedLevels[i].completed) {
         const completedLevelsLength = completedLevels.length;
         for (let j = completedLevelsLength - 1; j >= 0; j--) {

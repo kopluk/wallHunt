@@ -1,14 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import './App.css'
-import {BrowserRouter, useParams} from "react-router-dom";
+import React, {useEffect} from 'react';
+import './styles/index.css'
+import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
-import {useTypedSelector} from "./hooks/useTypedSelector";
-import {useActions} from "./hooks/useActions";
+import NavBar from "./components/NavBar";
 
 function App() {
+  useEffect(() => {
+    const isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
+    if (isMobile) {
+      alert('Здравствуйте, вы зашли на этот сайт с телефона - для вас это может быть не комфортно. Вы можете включить \"версию для ПК\".')
+    }
+  }, [])
+
   return (
     <BrowserRouter basename={'/wallHunt'}>
-      <AppRouter />
+      <div className={'app'}>
+        <div className={'_container'}>
+          <NavBar/>
+        </div>
+        <AppRouter/>
+      </div>
     </BrowserRouter>
   );
 }

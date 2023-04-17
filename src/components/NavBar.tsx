@@ -3,12 +3,31 @@ import {useNavigate} from "react-router-dom";
 import MyButton from "../UI/MyButton/MyButton";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useActions} from "../hooks/useActions";
+import {ICompletedLevel} from "../types/CompletedLevels";
+import StarsComponent from "./StarsComponent";
 
 const NavBar: FC = () => {
+  return (
+    <div className={'navbar'}>
+      <div className="navbar__desktop">
+        <NavBarInner keyAdder={1}/>
+      </div>
+      <div className="navbar__mobile">
+        <NavBarInner keyAdder={11}/>
+      </div>
+    </div>
+  );
+}
+
+interface NavBarInnerProps {
+  keyAdder: number;
+}
+
+const NavBarInner: FC<NavBarInnerProps> = ({keyAdder}) => {
   const {completedLevels} = useTypedSelector(state => state.completedLevels)
   const {setLocalCompletedLevels} = useActions();
 
-  const [localCompletedLevels, setCompletedLevels] = useState(() => {
+  const [localCompletedLevels, setCompletedLevels] = useState<ICompletedLevel[]>(() => {
     const initialValue = JSON.parse(localStorage.getItem("completedLevels") || JSON.stringify(completedLevels));
     return initialValue;
   });
@@ -23,50 +42,31 @@ const NavBar: FC = () => {
   }, [completedLevels])
 
   const navigate = useNavigate();
-
   return (
-    <div className={'navbar'}>
-      <div className={'navbar_left'}>
-        <MyButton click={() => navigate('/congratulations')} disabled={!completedLevels[6].completed}>
-          <span>Поздравления</span>
-        </MyButton>
-        <MyButton click={() => navigate('/about')}>
-          <span>Об игре</span>
-        </MyButton>
+    <>
+      <div className={'navbar__left'}>
+        <div className="btns__column">
+          <MyButton click={() => navigate('/congratulations')}
+                    disabled={!completedLevels[6].completed}>Поздравления</MyButton>
+        </div>
+        <div className="btns__column">
+          <MyButton click={() => navigate('/about')}>Об игре</MyButton>
+        </div>
       </div>
-      <div className={'navbar_right'}>
-        <MyButton click={() => navigate('/level/1')} disabled={!completedLevels[0].completed}>
-          <span>1 уровень</span>
-        </MyButton>
-        <MyButton click={() => navigate('/level/2')} disabled={!completedLevels[1].completed}>
-          <span>2 уровень</span>
-        </MyButton>
-        <MyButton click={() => navigate('/level/3')} disabled={!completedLevels[2].completed}>
-          <span>3 уровень</span>
-        </MyButton>
-        <MyButton click={() => navigate('/level/4')} disabled={!completedLevels[3].completed}>
-          <span>4 уровень</span>
-        </MyButton>
-        <MyButton click={() => navigate('/level/5')} disabled={!completedLevels[4].completed}>
-          <span>5 уровень</span>
-        </MyButton>
-        <MyButton click={() => navigate('/level/6')} disabled={!completedLevels[5].completed}>
-          <span>6 уровень</span>
-        </MyButton>
-        <MyButton click={() => navigate('/level/7')} disabled={!completedLevels[6].completed}>
-          <span>7 уровень</span>
-        </MyButton>
+      <div className={'navbar__right'}>
+        {completedLevels.map(level =>
+          <div className={'btns__column'} key={level.levelNumber * keyAdder}>
+            <StarsComponent starsCount={level.levelStarts} size={30}/>
+            <MyButton
+              click={() => navigate(`/level/${level.levelNumber}`)}
+              disabled={!level.completed}
+            >{level.levelNumber} уровень</MyButton>
+          </div>
+        )}
       </div>
-    </div>
-  );
+    </>
+  )
 }
 
 export default NavBar;
 
-// disabled={!completedLevels[1]
-// disabled={!completedLevels[2]
-// disabled={!completedLevels[3]
-// disabled={!completedLevels[4]
-// disabled={!completedLevels[5]
-// disabled={!completedLevels[6]
-// disabled={!completedLevels[7]

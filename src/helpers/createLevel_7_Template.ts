@@ -8,7 +8,11 @@ import {Names} from "../models/entities/Names";
 export const createLevel_7_Template = () => {
   const wallsCount = randomInteger(120, 240);
   const enemiesCount = randomInteger(3, 4);
-  const levelMaxMoves = Math.floor(enemiesCount * 2 + wallsCount * enemiesCount / 18);
+  const limitsOfMoves = [
+    Math.floor(enemiesCount * 2 + wallsCount * enemiesCount / 18),
+    Math.floor(enemiesCount * 2 + wallsCount * enemiesCount / 18) + 1,
+    Math.floor(enemiesCount * 2 + wallsCount * enemiesCount / 18) + 2
+  ];
   const levelEntities: ILevelsEntities[] = [];
 
   for (let i = 0; i < wallsCount; i++) {
@@ -26,7 +30,13 @@ export const createLevel_7_Template = () => {
     levelEntities.push({entity: Names.ENEMY, x, y, damage: 50, health})
   }
 
-  levelEntities.push({entity: Names.PLAYER, x: randomInteger(0, 29), y: randomInteger(0, 29), damage: randomInteger(50, 100), health: 100})
+  levelEntities.push({
+    entity: Names.PLAYER,
+    x: randomInteger(0, 29),
+    y: randomInteger(0, 29),
+    damage: randomInteger(50, 100),
+    health: 100
+  })
 
-  return {levelMaxMoves, levelEntities}
+  return {limitsOfMoves, levelEntities}
 }

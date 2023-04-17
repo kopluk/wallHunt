@@ -23,6 +23,7 @@ const CellComponent: FC<CellProps> = ({cell, click}) => {
           cell.occupied?.name === Names.ENEMY ? Names.ENEMY : ''].join(' ')
         }>
       </div>
+      {/*<div style={{fontSize: 10}}>{cell.x}-{cell.y}</div>*/}
     </div>
   );
 };

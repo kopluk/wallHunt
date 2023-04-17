@@ -1,24 +1,20 @@
 import {Cell} from "./Cell";
 import {Enemy, Player, Wall} from "./entities/Entity";
 import {Names} from "./entities/Names";
-import {LevelsEntities} from "./levels/LevelsEntities";
-import {randomInteger} from "../utils/randomInteger";
 import {ILevelsEntities} from "../types/level";
-
 
 export class Board {
   cells: Cell[][] = [];
   gameOvered: boolean = false;
-  gameLost: boolean = false;
   gameWined: boolean = false;
 
   movesCount: number = 0;
-  limitMovesCount: number;
+  limitsOfMoves: number[];
   entities: ILevelsEntities[];
   levelNumber: number;
 
-  constructor(limitMovesCount: number, entities: ILevelsEntities[], levelNumber: number) {
-    this.limitMovesCount = limitMovesCount;
+  constructor(limitsOfMoves: number[], entities: ILevelsEntities[], levelNumber: number) {
+    this.limitsOfMoves = limitsOfMoves;
     this.entities = entities;
     this.levelNumber = levelNumber;
   }
@@ -38,11 +34,10 @@ export class Board {
   }
 
   public getCopyBoard(): Board {
-    const newBoard = new Board(this.limitMovesCount, this.entities, this.levelNumber);
+    const newBoard = new Board(this.limitsOfMoves, this.entities, this.levelNumber);
     newBoard.cells = this.cells;
     newBoard.movesCount = this.movesCount;
     newBoard.gameOvered = this.gameOvered;
-    newBoard.gameLost = this.gameLost;
     newBoard.gameWined = this.gameWined;
     newBoard.highLightCells();
     return newBoard;
@@ -91,7 +86,9 @@ export class Board {
   }
 
   public isMovesLeft(): boolean {
-    return this.movesCount < this.limitMovesCount;
+    // return this.movesCount < this.limitMovesCount;
+    console.warn('isMovesLeft is deprecated')
+    return true;
   }
 
   public isEnemiesDead(): boolean {
@@ -112,10 +109,6 @@ export class Board {
       this.gameWin()
       return;
     }
-    if (!this.isMovesLeft()) {
-      this.gameLose()
-      return;
-    }
   }
 
   public gameWin() {
@@ -123,8 +116,17 @@ export class Board {
     this.gameOvered = true;
   }
 
-  public gameLose() {
-    this.gameLost = true;
-    this.gameOvered = true;
+  public howMuchStars(): number {
+    let countOfStars: number = 1;
+    const sortedLimitsOfMoves = this.limitsOfMoves.sort((a, b) => b - a)
+
+    let i = 0;
+    for (const limitOfMovesCount of sortedLimitsOfMoves) {
+      if (this.movesCount <= limitOfMovesCount) {
+        countOfStars = i + 1;
+      }
+      i++;
+    }
+    return countOfStars;
   }
 }

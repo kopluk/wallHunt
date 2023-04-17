@@ -1,0 +1,130 @@
+.level__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 768px;
+}
+
+.level__navbar {
+    margin: 0 0 45px 0;
+}
+
+.board__info {
+    flex: 0 1 30%;
+    text-align: center;
+}
+
+.board__info > *:not(:last-child) {
+    margin: 0 0 20px 0;
+}
+
+.board__wrapper {
+    position: relative;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 902px;
+    height: 902px;
+    border: 1px solid #575757;
+}
+
+.gameOver {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(1px);
+}
+
+.gameLose {
+    background: rgba(255, 0, 0, 0.2);
+    color: red;
+}
+
+.gameWin {
+    background: rgba(0, 139, 255, 0.2);
+    color: #003e9a;
+    text-align: center;
+}
+
+.win__container > *:not(:last-child) {
+    margin: 0 0 20px 0;
+}
+
+.win__container a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.win__container .stars__container {
+    width: 350px;
+    justify-content: space-between;
+}
+
+.cell {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #575757;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    width: 70%;
+    height: 70%;
+    background-color: #57c5b9;
+}
+
+.enemy {
+    width: 70%;
+    height: 70%;
+    background-color: #f53232;
+}
+
+.healthBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5px;
+    background-color: #29ec29;
+}
+
+.available {
+    background-color: #c0bebe;
+}
+
+.wall {
+    background-color: #939393;
+}
+
+@media screen and (max-width: 1360px) {
+    .level__container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .board__info {
+        text-align: center;
+        margin: 0 0 30px 0;
+    }
+    .board {
+        width: 752px;
+        height: 752px;
+    }
+    .cell {
+        width: 25px;
+        height: 25px;
+    }
+}

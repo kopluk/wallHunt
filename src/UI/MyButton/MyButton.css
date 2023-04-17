@@ -2,16 +2,10 @@
     background-color: #73bfc5;
     border: 1px solid #6767da;
     border-radius: 5px;
+    padding: 5px 10px;
     font-size: 24px;
     color: #fff;
     cursor: pointer;
-}
-
-.mybtn > * {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 10px;
-    display: block;
 }
 
 .mybtn_disabled {

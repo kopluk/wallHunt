@@ -6,20 +6,20 @@ import {createLevel_7_Template} from "./createLevel_7_Template";
 export const createLevelTemplate = (urlLevelNumber: number) => {
 
   let levelEntities = LevelsEntities.LEVEL_1;
-  let levelMaxMoves = 1;
+  let limitsOfMoves = [1];
   const levelNumber: number = urlLevelNumber;
 
   levelTemplates.forEach(level => {
     if (level.levelNumber === levelNumber) {
       levelEntities = level.entities
-      levelMaxMoves = level.maxMoves
+      limitsOfMoves = [...level.limitsOfMoves]
     }
   })
 
   if (urlLevelNumber === 7) {
-    const {levelMaxMoves, levelEntities} = createLevel_7_Template();
-    return {levelMaxMoves, levelEntities, levelNumber}
+    const {limitsOfMoves, levelEntities} = createLevel_7_Template();
+    return {limitsOfMoves, levelEntities, levelNumber}
   }
 
-  return {levelMaxMoves, levelEntities, levelNumber};
+  return {limitsOfMoves, levelEntities, levelNumber};
 }

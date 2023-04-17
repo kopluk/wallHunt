@@ -11,10 +11,8 @@ interface GameOverComponentProps {
 
 const GameOverComponent: FC<GameOverComponentProps> = ({board}) => {
   return (
-    <div className={['gameOver', board.gameWined ? 'gameWin' : '', board.gameLost ? 'gameLose' : ''].join(' ')}>
-      {board.gameLost
-        ? <div>GAME OVER</div>
-        : <WinComponent levelNumber={board.levelNumber} />}
+    <div className={['gameOver', board.gameWined ? 'gameWin' : ''].join(' ')}>
+        <WinComponent levelNumber={board.levelNumber} board={board}/>
     </div>
   );
 };

@@ -11,5 +11,5 @@ export interface ILevelsEntities {
 export interface ILevelTemplates {
   entities: ILevelsEntities[];
   levelNumber: number;
-  maxMoves: number;
+  limitsOfMoves: number[];
 }

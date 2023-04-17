@@ -1,0 +1,33 @@
+.congratulations__container {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.congratulations__content {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.congratulations__content > *:not(:last-child) {
+    margin: 0 0 120px 0;
+}
+
+@media screen and (max-width: 1240px) {
+    .congratulations__content {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 868px) {
+    .congratulations__content {
+        font-size: 18px;
+    }
+    .congratulations__content > *:not(:last-child) {
+        margin: 0 0 70px 0;
+    }
+}
+

@@ -7,20 +7,20 @@ interface InfoComponentsProps {
   board: Board;
 }
 
-const InfoComponent: FC<InfoComponentsProps> = ({restart, board}) => {
+const BoardInfoComponent: FC<InfoComponentsProps> = ({restart, board}) => {
   return (
-    <div className={'info'}>
+    <div className={'board__info'}>
       <MyButton click={restart}><span>Restart</span></MyButton>
-      <div className={'info__text'}>
+      <div className={'board__info_text'}>
         <div>
           Количество ходов: {board.movesCount}
         </div>
-        <div>
-          Максимальное количество ходов: {board.limitMovesCount}
-        </div>
+        {/*<div>*/}
+        {/*  Максимальное количество ходов: {board.limitsOfMoves[0]}*/}
+        {/*</div>*/}
       </div>
     </div>
   );
 };
 
-export default InfoComponent;
+export default BoardInfoComponent;
