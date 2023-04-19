@@ -85,13 +85,23 @@
 .player {
     width: 70%;
     height: 70%;
-    background-color: #57c5b9;
+    background-color: #759cd9;
 }
 
 .enemy {
     width: 70%;
     height: 70%;
     background-color: #f53232;
+}
+
+.portal {
+    width: 70%;
+    height: 70%;
+    background-color: #00cbad;
+}
+
+.wall {
+    background-color: #939393;
 }
 
 .healthBar {
@@ -104,10 +114,6 @@
 
 .available {
     background-color: #c0bebe;
-}
-
-.wall {
-    background-color: #939393;
 }
 
 @media screen and (max-width: 1360px) {

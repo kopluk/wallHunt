@@ -174,7 +174,11 @@ export class Cell {
       if (this.isAttack()) {
         this.Attack(playerCell)
       } else {
-        this.setPlayerCell(this, playerCell)
+        if (this.occupied?.name) {
+          this.Teleport(this, playerCell)
+        } else {
+          this.setPlayerCell(this, playerCell)
+        }
       }
     }
   }
@@ -197,7 +201,14 @@ export class Cell {
     }
   }
 
-  private isDead() : boolean {
+  private Teleport(cell: Cell, playerCell: Cell) {
+    if (cell.occupied && cell.occupied.destination && cell.occupied.destination.occupied === null) {
+      cell.occupied.destination.occupied = playerCell.occupied;
+      playerCell.occupied = null;
+    }
+  }
+
+  private isDead(): boolean {
     return !!(this.occupied && this.occupied.health <= 0);
   }
 

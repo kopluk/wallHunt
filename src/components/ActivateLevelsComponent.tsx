@@ -18,6 +18,8 @@ const ActivateLevelsComponent = () => {
   ]
 
   function handleClick() {
+    setCodeValue('')
+
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
@@ -38,7 +40,7 @@ const ActivateLevelsComponent = () => {
 
   return (
     <div>
-      <input className={'myinput'} type="text" value={codeValue} onChange={e => setCodeValue(e.target.value)}/>
+      <input placeholder={'Введите код активации...'} className={'myinput'} type="text" value={codeValue} onChange={e => setCodeValue(e.target.value)}/>
       <button onClick={handleClick} className={'mybtn'}>Открыть все уровни</button>
     </div>
   );

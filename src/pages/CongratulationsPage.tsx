@@ -35,7 +35,7 @@ const CongratulationsPage = () => {
     <div className="congratulations__container _container">
       <div className="congratulations__content">
         <h2>
-          Поздравляю, вы прошли все уровни на {starsCount} здвезд.
+          Поздравляю, вы прошли все уровни на {starsCount} звезд.
         </h2>
         <h3>
           {congratulationText}

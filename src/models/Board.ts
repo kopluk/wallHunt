@@ -1,5 +1,5 @@
 import {Cell} from "./Cell";
-import {Enemy, Player, Wall} from "./entities/Entity";
+import {Enemy, Player, Portal, Wall} from "./entities/Entity";
 import {Names} from "./entities/Names";
 import {ILevelsEntities} from "../types/level";
 
@@ -58,10 +58,14 @@ export class Board {
   }
 
   public addEntities() {
+    console.log(this.entities)
     for (const entity of this.entities) {
       const entityName = entity.entity;
       if (entityName === Names.WALL) {
         new Wall(this.getCell(entity.x, entity.y))
+      }
+      if (entityName === Names.PORTAL && entity.destination) {
+        new Portal(this.getCell(entity.x, entity.y), this.getCell(entity.destination.x, entity.destination.y))
       }
       if (entityName === Names.ENEMY && entity.damage && entity.health) {
         new Enemy(this.getCell(entity.x, entity.y), entity.damage, entity.health)

@@ -7,6 +7,7 @@ export class Entity {
   health: number = 0;
   maxHealth: number = 0;
   damage: number = 0;
+  destination: Cell | null = null;
 
   constructor(cell: Cell, damage: number, health: number) {
     this.name = Names.ENTITY;
@@ -33,9 +34,16 @@ export class Enemy extends Entity {
 }
 
 export class Wall extends Entity {
-
-  constructor(cell: Cell, damage: number = 0, health: number = 1000000000) {
-    super(cell, damage, health);
+  constructor(cell: Cell) {
+    super(cell, 0, 100000000);
     this.name = Names.WALL;
+  }
+}
+
+export class Portal extends Entity {
+  constructor(cell: Cell, destination: Cell) {
+    super(cell, 0, 100000000);
+    this.name = Names.PORTAL;
+    this.destination = destination;
   }
 }
